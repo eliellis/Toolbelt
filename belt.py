@@ -18,6 +18,6 @@ class Toolbelt(object):
         return iterate
 
     def map(self, fn):
-        def iterate(*args):
-            return [fn(i) for i in args]
+        def iterate(*args, **kwargs):
+            return [fn(val) for val in args] + [fn(val, key) for key, val in kwargs.iteritems()]
         return iterate
